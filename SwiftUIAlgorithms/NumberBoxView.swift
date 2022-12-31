@@ -23,7 +23,7 @@ struct NumberBoxView: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(color)
+                    .fill(color.gradient)
                     .frame(height: boxSize.rawValue)
                     .frame(minWidth: boxSize.rawValue / 2, maxWidth: boxSize.rawValue)
                     .shadow(radius: 3)

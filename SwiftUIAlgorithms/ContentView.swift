@@ -17,28 +17,85 @@ struct ContentView: View {
     @State private var currentNumber = 0
     @State private var lookingForNumber = 0
     
-    @State private var algoStatus: AlgoStatus = .idle
+    @State private var algoStatus: AlgoStatus = .start
     @State private var showFinishedAlert = false
     
     @State private var result = [Int]()
     
     enum AlgoStatus {
-        case idle, started
+        case start, playing, finished
     }
     
-    func getCurrentNumberBoxColor(for number: Int) -> Color {
-        if algoStatus != .idle && lookingForNumber == number && seenDictionary[number] != nil {
+    private func getCurrentNumberBoxColor(for number: Int) -> Color {
+        if algoStatus != .start && lookingForNumber == number && seenDictionary[lookingForNumber] != nil {
             return .green
-        } else if algoStatus != .idle && currentNumber == number {
+        } else if algoStatus != .start && currentNumber == number {
             return .orange
         } else {
             return .yellow
         }
     }
     
+    private func getCurrentIndexBoxColor(for index: Int) -> Color { // TODO: Check logic for index color
+        if algoStatus != .start {
+            if seenDictionary[lookingForNumber] != nil && currentIndex == index || seenDictionary[lookingForNumber] == index {
+                return .green.opacity(0.5)
+            } else if currentIndex == index {
+                return .blue
+            }
+        }
+        return .gray
+    }
+    
+    private func getButtonText(for status: AlgoStatus) -> String {
+        switch algoStatus{
+        case .start:
+            return "Start"
+        case .playing:
+            return "Next"
+        case .finished:
+            return "Restart"
+        }
+    }
+    
+    private func reset() {
+        withAnimation {
+            algoStatus = .start
+            currentIndex = -1
+            currentNumber = 0
+            lookingForNumber = 0
+            result = []
+            seenDictionary = [:]
+        }
+    }
+    
+    private func nextStep() {
+        withAnimation {
+            algoStatus = .playing
+            currentIndex += 1
+            currentNumber = numbers[currentIndex]
+            lookingForNumber = target - currentNumber
+            
+            if let foundIndex = seenDictionary[lookingForNumber] {
+                result = [foundIndex, currentIndex]
+//                showFinishedAlert = true
+                algoStatus = .finished
+            }
+            seenDictionary[currentNumber] = currentIndex
+        }
+    }
+    
+    private func toNextAlgoStatus() {
+        if algoStatus == .finished {
+            reset()
+        } else {
+            nextStep()
+        }
+    }
+    
     var body: some View {
         NavigationView {
-            VStack {
+            ScrollView {
                 Group {
 //                    Text("Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.")
 //                        .padding(.bottom)
@@ -48,7 +105,7 @@ struct ContentView: View {
                         ForEach(Array(zip(numbers.indices, numbers)), id: \.0) { index, number in
                             VStack {
                                 NumberBoxView(number: "\(number)", color: getCurrentNumberBoxColor(for: number), boxSize: .large)
-                                NumberBoxView(number: "\(index)", color: algoStatus != .idle && currentIndex == index ? .blue : .gray, boxSize: .small)
+                                NumberBoxView(number: "\(index)", color: getCurrentIndexBoxColor(for: index), boxSize: .small)
                             }
                         }
                     }
@@ -57,7 +114,7 @@ struct ContentView: View {
                         .bold()
                         .padding(.bottom)
                 }
-                Text(algoStatus == .idle ? "Currently looking for number: -" : "Currently looking number: \(lookingForNumber)")
+                Text(algoStatus == .start ? "Currently looking for number: -" : "Currently looking for number: \(lookingForNumber)")
                     .font(.headline)
                 Text("Result: \(result.description)")
                     .font(.title)
@@ -70,27 +127,22 @@ struct ContentView: View {
                         HStack {
                             NumberBoxView(number: "\(number)", color: getCurrentNumberBoxColor(for: number), boxSize: .small)
                             Text(":")
-                            NumberBoxView(number: "\(index)", color: algoStatus != .idle && currentIndex == index ? .blue : .gray, boxSize: .small)
+                            NumberBoxView(number: "\(index)", color: getCurrentIndexBoxColor(for: index), boxSize: .small)
                         }
                     }
                 }
                 Spacer()
-                Button(algoStatus == .idle ? "Start" : "Next") {
-                    algoStatus = .started
-                    currentIndex += 1
-                    currentNumber = numbers[currentIndex]
-                    lookingForNumber = target - currentNumber
-                    
-                    if let foundIndex = seenDictionary[lookingForNumber] {
-                        result = [foundIndex, currentIndex]
-                        showFinishedAlert = true
-                    }
-                    seenDictionary[currentNumber] = currentIndex
-                }
-                .font(.largeTitle)
             }
             .padding()
             .navigationTitle("Two Sum")
+            .background(.blue.gradient)
+            .toolbar {
+                Button(getButtonText(for: algoStatus)) {
+                    toNextAlgoStatus()
+                }
+                .font(.title).bold()
+                .foregroundColor(.orange)
+            }
         }
     }
 }
