@@ -1,5 +1,5 @@
 //
-//  TwoSum.swift
+//  TwoSumSolution.swift
 //  SwiftUIAlgorithms
 //
 //  Created by Cesar Mejia Valero on 12/30/22.

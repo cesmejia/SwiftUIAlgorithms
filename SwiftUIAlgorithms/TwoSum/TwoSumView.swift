@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  TwoSumView.swift
 //  SwiftUIAlgorithms
 //
 //  Created by Cesar Mejia Valero on 12/30/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import OrderedCollections
 
-struct ContentView: View {
+struct TwoSumView: View {
     let numbers = [3, 5, 2, -4, 8, 11]
     let target = 7
     
@@ -147,8 +147,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TwoSumView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TwoSumView()
     }
 }

@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		CA40AC792960007000F18156 /* SwiftUIAlgorithmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40AC782960007000F18156 /* SwiftUIAlgorithmsApp.swift */; };
-		CA40AC7B2960007000F18156 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40AC7A2960007000F18156 /* ContentView.swift */; };
+		CA40AC7B2960007000F18156 /* TwoSumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40AC7A2960007000F18156 /* TwoSumView.swift */; };
 		CA40AC7D2960007200F18156 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA40AC7C2960007200F18156 /* Assets.xcassets */; };
 		CA40AC802960007200F18156 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA40AC7F2960007200F18156 /* Preview Assets.xcassets */; };
-		CA40AC872960010D00F18156 /* TwoSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40AC862960010C00F18156 /* TwoSum.swift */; };
+		CA40AC872960010D00F18156 /* TwoSumSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40AC862960010C00F18156 /* TwoSumSolution.swift */; };
 		CA40AC8929601B5400F18156 /* NumberBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40AC8829601B5400F18156 /* NumberBoxView.swift */; };
 		CA40AC8E296023E700F18156 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = CA40AC8D296023E700F18156 /* Collections */; };
 		CA40AC90296023E700F18156 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = CA40AC8F296023E700F18156 /* DequeModule */; };
@@ -21,10 +21,10 @@
 /* Begin PBXFileReference section */
 		CA40AC752960007000F18156 /* SwiftUIAlgorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIAlgorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA40AC782960007000F18156 /* SwiftUIAlgorithmsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAlgorithmsApp.swift; sourceTree = "<group>"; };
-		CA40AC7A2960007000F18156 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CA40AC7A2960007000F18156 /* TwoSumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSumView.swift; sourceTree = "<group>"; };
 		CA40AC7C2960007200F18156 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA40AC7F2960007200F18156 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CA40AC862960010C00F18156 /* TwoSum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSum.swift; sourceTree = "<group>"; };
+		CA40AC862960010C00F18156 /* TwoSumSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSumSolution.swift; sourceTree = "<group>"; };
 		CA40AC8829601B5400F18156 /* NumberBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberBoxView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,9 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				CA40AC782960007000F18156 /* SwiftUIAlgorithmsApp.swift */,
-				CA40AC7A2960007000F18156 /* ContentView.swift */,
-				CA40AC8829601B5400F18156 /* NumberBoxView.swift */,
-				CA40AC862960010C00F18156 /* TwoSum.swift */,
+				CAC003AE2960FD69001582BC /* TwoSum */,
 				CA40AC7C2960007200F18156 /* Assets.xcassets */,
 				CA40AC7E2960007200F18156 /* Preview Content */,
 			);
@@ -77,6 +75,16 @@
 				CA40AC7F2960007200F18156 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CAC003AE2960FD69001582BC /* TwoSum */ = {
+			isa = PBXGroup;
+			children = (
+				CA40AC7A2960007000F18156 /* TwoSumView.swift */,
+				CA40AC8829601B5400F18156 /* NumberBoxView.swift */,
+				CA40AC862960010C00F18156 /* TwoSumSolution.swift */,
+			);
+			path = TwoSum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,9 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA40AC7B2960007000F18156 /* ContentView.swift in Sources */,
+				CA40AC7B2960007000F18156 /* TwoSumView.swift in Sources */,
 				CA40AC792960007000F18156 /* SwiftUIAlgorithmsApp.swift in Sources */,
-				CA40AC872960010D00F18156 /* TwoSum.swift in Sources */,
+				CA40AC872960010D00F18156 /* TwoSumSolution.swift in Sources */,
 				CA40AC8929601B5400F18156 /* NumberBoxView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
