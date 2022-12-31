@@ -5,11 +5,7 @@
 //  Created by Cesar Mejia Valero on 12/30/22.
 //
 
-struct Solution {
-    init() {
-        print(twoSum([2,7,11,15], 9))
-    }
-    
+struct SolutionAlgo {
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
         var seenDict = [Int: Int]()
         
